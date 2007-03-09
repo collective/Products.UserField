@@ -191,7 +191,7 @@ class UserField(ObjectField):
         except: # XXX whats the exact name of it? ComponentLookupException?
             pass
         else:
-            group = translator.convertToRealGoup(group)
+            group = translator.convertToRealGroup(group)
 
         if not self.prefill_member:
             return default
