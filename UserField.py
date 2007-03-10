@@ -50,6 +50,7 @@ from Products.ATMemberSelectWidget.ATMemberSelectWidget import MemberSelectWidge
 ##code-section module-header #fill in your manual code here
 from sets import Set
 import types
+from zope.component import ComponentLookupError
 from interfaces import IGenericGroupTranslation
 ##/code-section module-header
 
@@ -185,10 +186,10 @@ class UserField(ObjectField):
         default = ObjectField.getDefault(self, instance)
         if default:
             return default
-        group = self.widget.groupName # we might get a Role here!
+        group = self.widget.groupName # we might get a generic group-name here!
         try:
             translator = IGenericGroupTranslation(instance)
-        except: # XXX whats the exact name of it? ComponentLookupException?
+        except ComponentLookupError:
             pass
         else:
             group = translator.convertToRealGroup(group)
