@@ -167,7 +167,7 @@ class UserField(ObjectField):
         member_ids = obj.users_with_local_role(role)
         # XXX
         if 1 or _checkPermission(ChangeLocalRoles, obj):
-            obj.manage_delLocalRoles([member_ids])
+            obj.manage_delLocalRoles(member_ids)
             #for member_id in member_ids:
                 #roles = [r for r in obj.get_local_roles_for_userid(userid=member_id)\
                 #         if r != role]
