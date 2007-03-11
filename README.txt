@@ -2,8 +2,6 @@
 UserField
 =========
 
-WORK IN PROGRESS
-
 -------
 Purpose
 -------
@@ -19,9 +17,11 @@ Authors:
 
 - Phil Auersperg <phil@bluedynamics.com>,
 - Jens Klein <jens@bluedynamics.com>,  
-- Robert Niederreiter <robertn@bluedynamics.com>
 
 Copyright (C) 2006-2007 BlueDynamics Alliance, Innsbruck, Austria
+
+This code was made for BKS Chur Project: 
+Communication-Platform/Intranet/e-learning.
 
 -------
 License
