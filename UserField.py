@@ -165,15 +165,18 @@ class UserField(ObjectField):
         """
 
         member_ids = obj.users_with_local_role(role)
+        # XXX
         if 1 or _checkPermission(ChangeLocalRoles, obj):
-            for member_id in member_ids:
-                roles = [r for r in obj.get_local_roles_for_userid(userid=member_id)\
-                         if r != role]
-                if roles:
-                    obj.manage_setLocalRoles(member_id, roles)
-                else:
-                    obj.manage_delLocalRoles([member_id])
-
+            obj.manage_delLocalRoles([member_ids])
+            #for member_id in member_ids:
+                #roles = [r for r in obj.get_local_roles_for_userid(userid=member_id)\
+                #         if r != role]
+                #if roles:
+                    #obj.manage_setLocalRoles(member_id, roles)
+                #else:
+                    #obj.manage_delLocalRoles([member_id])
+        
+        # if recursive: handle subobjects
         if recursive and hasattr( aq_base(obj), 'contentValues' ):
             for subobj in obj.contentValues():
                 self.deleteLocalRolesByRole(subobj, member_ids, 0, 1)
