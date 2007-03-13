@@ -104,14 +104,7 @@ class UserField(ObjectField):
         default = ObjectField.getDefault(self, instance)
         if default:
             return default
-        group = self.widget.groupName # we might get a generic group-name here!
-        try:
-            translator = IGenericGroupTranslation(instance)
-        except ComponentLookupError:
-            pass
-        else:
-            group = translator.convertToRealGroup(group)
-
+        group = self.widget.getGroupId()
         if not self.prefill_member:
             return default
         
