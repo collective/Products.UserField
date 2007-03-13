@@ -34,8 +34,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.Registry import registerField
 from Products.Archetypes.Field import ObjectField
 from Products.UserAndGroupSelectionWidget import UserAndGroupSelectionWidget
-
-from interfaces import IGenericGroupTranslation
 from utils import setLocalRoles
 
 class UserField(ObjectField):
