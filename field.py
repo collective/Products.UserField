@@ -26,23 +26,15 @@ __author__ = """Phil Auersperg <phil@bluedynamics.com>, Peter Holzer <hpeter@agi
 Jens Klein <jens@bluedynamics.com>"""
 __docformat__ = 'plaintext'
 
+import types
+from sets import Set
+from zope.component import ComponentLookupError
 from AccessControl import ClassSecurityInfo
-from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.Field import ObjectField, encode, decode
 from Products.Archetypes.Registry import registerField
-from Products.Archetypes.utils import DisplayList
-from Products.Archetypes import config as atconfig
-from Products.Archetypes.Widget import *
-from Products.Archetypes.Field  import *
-from Products.Archetypes.Schema import Schema
-from Products.Archetypes.generator import i18n
 from Products.Archetypes.Field import ObjectField
 from Products.UserAndGroupSelectionWidget import UserAndGroupSelectionWidget
 
-from sets import Set
-import types
-from zope.component import ComponentLookupError
 from interfaces import IGenericGroupTranslation
 from utils import setLocalRoles
 
@@ -53,29 +45,28 @@ class UserField(ObjectField):
 
     _properties = ObjectField._properties.copy()
     _properties.update({
-        'type': 'userfield',
-        'widget': MemberSelectWidget,
-        'multiValued'     : 0,
-        'localrole'       : None,
-        'cumulative'      : False,
-        'prefill_member'  : False,
-        'limitToOwnGroups': True,
+        'type'              : 'userfield',
+        'widget'            : UserAndGroupSelectionWidget,
+        'multiValued'       : False, 
+        'localrole'         : None,  # set local role for selected users
+        'cumulative'        : False, # cumulative local roles?
+        'prefill_member'    : False, # prefill with current member
+        'limitToOwnGroups'  : True,  # limit prefill to own groups
         })
         
     security  = ClassSecurityInfo()
 
     security.declarePrivate('get')
-    security.declarePrivate('getRaw')
-    security.declarePrivate('set')
-
     def get(self, instance, **kwargs):
         return ObjectField.get(self, instance, **kwargs)
 
 
+    security.declarePrivate('getRaw')
     def getRaw(self, instance, **kwargs):
         return ObjectField.getRaw(self, instance, **kwargs)
 
 
+    security.declarePrivate('set')
     def set(self, instance, value, **kwargs):
         res = ObjectField.set(self, instance, value, **kwargs)
         if value is None:
@@ -135,7 +126,5 @@ class UserField(ObjectField):
         return default
 
 
-registerField(UserField,
-              title='UserField',
-              description='')
+registerField(UserField, title='UserField', description='')
 
