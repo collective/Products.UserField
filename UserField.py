@@ -37,9 +37,8 @@ from Products.Archetypes.Widget import *
 from Products.Archetypes.Field  import *
 from Products.Archetypes.Schema import Schema
 from Products.Archetypes.generator import i18n
-from Products.UserField import config
 from Products.Archetypes.Field import ObjectField
-from Products.ATMemberSelectWidget.ATMemberSelectWidget import MemberSelectWidget
+from Products.UserAndGroupSelectionWidget import UserAndGroupSelectionWidget
 
 from sets import Set
 import types
