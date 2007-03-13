@@ -3,8 +3,6 @@
 # File: UserField.py
 #
 # Copyright (c) 2007 by BlueDynamics Alliance, Austria
-# Generator: ArchGenXML Version 1.5.3 dev/svn
-#            http://plone.org/products/archgenxml
 #
 # GNU General Public License (GPL)
 #
@@ -38,50 +36,34 @@ from Products.Archetypes import config as atconfig
 from Products.Archetypes.Widget import *
 from Products.Archetypes.Field  import *
 from Products.Archetypes.Schema import Schema
-try:
-    from Products.generator import i18n
-except ImportError:
-    from Products.Archetypes.generator import i18n
+from Products.Archetypes.generator import i18n
 from Products.UserField import config
 from Products.Archetypes.Field import ObjectField
 from Products.ATMemberSelectWidget.ATMemberSelectWidget import MemberSelectWidget
 
-
-##code-section module-header #fill in your manual code here
 from sets import Set
 import types
 from zope.component import ComponentLookupError
 from interfaces import IGenericGroupTranslation
 from utils import setLocalRoles
-##/code-section module-header
-
 
 class UserField(ObjectField):
-    """
-    """
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
+    """Field to store userids"""
 
     __implements__ = (getattr(ObjectField,'__implements__',()),) + (getattr(ObjectField,'__implements__',()),)
-
 
     _properties = ObjectField._properties.copy()
     _properties.update({
         'type': 'userfield',
         'widget': MemberSelectWidget,
-        ##code-section field-properties #fill in your manual code here
         'multiValued'     : 0,
         'localrole'       : None,
         'cumulative'      : False,
         'prefill_member'  : False,
         'limitToOwnGroups': True,
-        ##/code-section field-properties
-
         })
         
     security  = ClassSecurityInfo()
-    ##code-section security-declarations #fill in your manual code here
-    ##/code-section security-declarations
 
     security.declarePrivate('get')
     security.declarePrivate('getRaw')
@@ -157,9 +139,4 @@ class UserField(ObjectField):
 registerField(UserField,
               title='UserField',
               description='')
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
 
