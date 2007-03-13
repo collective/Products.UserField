@@ -102,7 +102,7 @@ class UserField(ObjectField):
         default = ObjectField.getDefault(self, instance)
         if default:
             return default
-        group = self.widget.getGroupId()
+        group = self.widget.getGroupId(instance)
         if not self.prefill_member:
             return default
         
