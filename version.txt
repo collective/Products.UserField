@@ -1,1 +1,1 @@
-1.0-beta svn/dev build 1
+1.0-beta1 
