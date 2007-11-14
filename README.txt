@@ -6,8 +6,15 @@ UserField
 Purpose
 -------
 
-UserField is an Archetypes field with some functionality to store user ids, plus
-to provide features like setting of local roles, group validation and so on.
+UserField is an Archetypes field with some functionality to 
+
+* store user and/or group ids, 
+
+* set local roles based on the selection, 
+
+* group limitation. 
+
+and some more.
 
 --------------------
 Author and Copyright
