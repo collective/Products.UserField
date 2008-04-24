@@ -102,10 +102,16 @@ class UserField(ObjectField):
         default = ObjectField.getDefault(self, instance)
         if default:
             return default
-        group = self.widget.getGroupId(instance)
-        if not self.prefill_member:
-            return default
         
+        # The field should not know about it's widget. from this point of view
+        # this field sucks
+        if hasattr(self.widget, 'getGroupId'):
+            group = self.widget.getGroupId(instance)
+            if not self.prefill_member:
+                return default
+        else:
+            group = None
+            
         member = instance.portal_membership.getAuthenticatedMember()
         if not member:
             return default
