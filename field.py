@@ -79,7 +79,7 @@ class UserField(ObjectField):
 
         if self.localrole:
             localrole = self.localrole
-            if type(self.localrole) in types.StringTypes:
+            if type(localrole) in types.StringTypes:
                 localrole = [localrole]
             setLocalRoles(instance, users, localrole, cumulative=self.cumulative)
         return res
@@ -107,10 +107,11 @@ class UserField(ObjectField):
         # this field sucks
         if hasattr(self.widget, 'getGroupId'):
             group = self.widget.getGroupId(instance)
-            if not self.prefill_member:
-                return default
         else:
             group = None
+
+        if not self.prefill_member:
+            return default
             
         member = instance.portal_membership.getAuthenticatedMember()
         if not member:
