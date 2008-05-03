@@ -96,6 +96,7 @@ class UserField(ObjectField):
         if casus == 1:
             return fullname
         else:
+            # superfluos?
             return 'Herrn/Frau %s' % fullname
                                                    
     def getDefault(self, instance):
