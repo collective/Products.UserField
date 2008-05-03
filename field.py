@@ -70,7 +70,7 @@ class UserField(ObjectField):
         if value is None:
             return res
 
-        if type(value) in types.StringTypes:
+        if isinstance(value, basestring):
             users = [value]
         elif type(value) in (types.ListType, types.TupleType):
             users = list(value)
@@ -79,7 +79,7 @@ class UserField(ObjectField):
 
         if self.localrole:
             localrole = self.localrole
-            if type(localrole) in types.StringTypes:
+            if isinstance(localrole, basestring):
                 localrole = [localrole]
             setLocalRoles(instance, users, localrole, cumulative=self.cumulative)
         return res
