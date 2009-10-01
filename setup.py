@@ -35,7 +35,7 @@ setup(name='Products.UserField',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.Archetypes',
+          'Products.UserAndGroupSelectionWidget',
           # Zope 2 dependencies are missing
       ],
       extras_require={
