@@ -23,7 +23,7 @@ setup(name='Products.UserField',
             'Programming Language :: Python',
             'Topic :: Internet :: WWW/HTTP :: Dynamic Content',            
       ], 
-      keywords='zope zope2 plone archetypes field user',
+      keywords='zope zope2 plone archetypes widget user',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
       url='https://svn.plone.org/svn/archetypes/MoreFieldsAndWidgets/UserField',
@@ -38,11 +38,5 @@ setup(name='Products.UserField',
           'Products.UserAndGroupSelectionWidget',
           # Zope 2 dependencies are missing
       ],
-      extras_require={
-          'test': [
-              'interlude',
-              # Zope 2 dependencies are missing
-          ]
-      },      
 )
 
