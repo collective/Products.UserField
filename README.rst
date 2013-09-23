@@ -1,8 +1,6 @@
-=========
 UserField
 =========
 
--------
 Purpose
 -------
 
@@ -16,7 +14,6 @@ UserField is an Archetypes field with some functionality to
 
 and some more.
 
---------------------
 Author and Copyright
 --------------------
 
