@@ -4,15 +4,16 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '2.0'
+version = '3.0'
 shortdesc = "Archetypes Field dealing with Plone Users and assign local roles."
-longdesc = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
-license = open(os.path.join(os.path.dirname(__file__), 'LICENSE.txt')).read()
+longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
+changes = open(os.path.join(os.path.dirname(__file__), 'CHANGES.rst')).read()
+license = open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
 
 setup(name='Products.UserField',
       version=version,
       description=shortdesc,
-      long_description=longdesc + license,
+      long_description='\n\n'.join([longdesc, changes, license]),
       classifiers=[
       # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
             'Development Status :: 5 - Production/Stable',
@@ -35,8 +36,7 @@ setup(name='Products.UserField',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.UserAndGroupSelectionWidget',
-          # Zope 2 dependencies are missing
+          'Products.UserAndGroupSelectionWidget>=3.0b',
       ],
 )
 

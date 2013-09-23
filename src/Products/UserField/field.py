@@ -5,7 +5,8 @@ from AccessControl import ClassSecurityInfo
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.Registry import registerField
 from Products.Archetypes.Field import ObjectField
-from Products.UserAndGroupSelectionWidget import UserAndGroupSelectionWidget
+from Products.UserAndGroupSelectionWidget.at.widget import \
+    UserAndGroupSelectionWidget
 from utils import setLocalRoles
 
 class UserField(ObjectField):
