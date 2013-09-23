@@ -2,7 +2,7 @@
 Change Log
 ==========
 
-3.0 (unreleased)
+3.0 (2013-09-23)
 ----------------
 
 - adapt import so it runs with Products.UserAndGroupSelectionWidget 3.0+
